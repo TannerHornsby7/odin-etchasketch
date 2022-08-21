@@ -45,6 +45,15 @@ body {
     margin: 0px;
     padding: 0px;
 }
+/*
+.square:hover::after {
+    background: red;
+    opacity: .25;
+  }
+.square:hover {
+    background: #05f;
+    opacity: 1;
+  }*/
 
 .grid {
     flex: auto;
@@ -71,5 +80,8 @@ body {
 }
 
 .painted {
-    background-color: whitesmoke;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    transition-delay: 5s;
 }
