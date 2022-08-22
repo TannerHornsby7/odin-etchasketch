@@ -2,7 +2,6 @@ body {
     height: 100vh;
     margin: 0;
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
 }
 
@@ -38,8 +37,9 @@ body {
 }
 
 .square {
-    width: 25px;
-    height: 25px;
+    flex: auto;
+    min-width: 5px;
+    min-height: 5px;
     border: .5px solid black;
     display: inline-block;
     margin: 0px;
@@ -56,20 +56,19 @@ body {
   }*/
 
 .grid {
-    flex: auto;
     display: flex;
     flex-direction: column;
+    align-items: stretch;
     justify-content: center;
-    background-color: white;
-    border: 2px solid black;
-    min-height: 500px;
-    width: 400px;
-    padding: 150px;
+    height: 700px;
 }
 
 .gridrow {
+    flex: auto;
     display: flex;
+    flex-direction: row;
     justify-content: center;
+    width: 700px;
 }
 
 .main {
@@ -77,6 +76,7 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0px;
+    padding: 50px;
 }
 
 .painted {
@@ -85,3 +85,20 @@ body {
     background-color: black;
     transition-delay: 5s;
 }
+
+.button {
+    border: none;
+    color: black;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  .button:hover {
+    background-color: gray;
+    color: white;
+  }

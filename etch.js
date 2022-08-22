@@ -2,13 +2,16 @@
 const grid = document.querySelector('.grid');
 const gridrow = document.createElement('div');
 const square = document.createElement('div');
+const button = document.querySelector('.button');
+
+let length = 10;
+
 gridrow.classList.add('gridrow');
 square.classList.add('square');
 
 //temp globals
-const ROWS = 16;
-const COLS = 16;
-const TOTAL = ROWS * COLS;
+const ROWS = length;
+const COLS = length;
 
 //populate row
 function populateRow(columns, row) {
@@ -41,7 +44,22 @@ function populateGrid(columns, rows) {
         grid.appendChild(row);
     }
 }
+function clearGrid(){
+    while(grid.firstChild){
+        grid.removeChild(grid.firstChild);
+        console.log("child removed");
+    }
+}
+
+clearGrid();
 populateGrid(COLS, ROWS);
 
+button.addEventListener('click', (e) => {
+    let str_length = prompt("Please input your desired canvas size(less than 100px):");
+    let input_length = parseInt(str_length);
+    console.log(input_length);
+    clearGrid();
+    populateGrid(input_length, input_length);
+});
 
 
