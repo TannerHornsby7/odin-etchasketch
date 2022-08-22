@@ -2,7 +2,9 @@
 const grid = document.querySelector('.grid');
 const gridrow = document.createElement('div');
 const square = document.createElement('div');
-const button = document.querySelector('.button');
+const sbutton = document.querySelector('.button.size');
+const rbutton = document.querySelector('.button.rainbow')
+const stbutton = document.querySelector('.button.standard');
 
 let length = 10;
 
@@ -12,6 +14,20 @@ square.classList.add('square');
 //temp globals
 const ROWS = length;
 const COLS = length;
+let RCOLOR = false;
+'black';
+
+function rainbowColor() {
+    return  "#" + ((1<<24)*Math.random() | 0).toString(16);
+}
+
+stbutton.addEventListener('click', ()=> {
+    RCOLOR = false;
+})
+
+rbutton.addEventListener('click', () => {
+    RCOLOR = true;
+})
 
 //populate row
 function populateRow(columns, row) {
@@ -22,13 +38,17 @@ function populateRow(columns, row) {
         temps.setAttribute('id', id);
         temps.addEventListener("mouseenter", (event) => {
             // highlight the mouseenter target
-            event.target.style.backgroundColor = "purple";
+            if(RCOLOR) {
+                event.target.style.backgroundColor = "#" + ((1<<24)*Math.random() | 0).toString(16);
+            } else {
+            event.target.style.backgroundColor = 'black';
+            }
             console.log(event.target.style.color);
           
             // reset the color after a short delay
             setTimeout(() => {
               event.target.style.backgroundColor = "";
-            }, 500);
+            }, 3000);
           }, false);
         row.appendChild(temps);
     }
@@ -54,7 +74,7 @@ function clearGrid(){
 clearGrid();
 populateGrid(COLS, ROWS);
 
-button.addEventListener('click', (e) => {
+sbutton.addEventListener('click', (e) => {
     let str_length = prompt("Please input your desired canvas size(less than 100px):");
     let input_length = parseInt(str_length);
     if(input_length > 100) {
@@ -63,5 +83,4 @@ button.addEventListener('click', (e) => {
     clearGrid();
     populateGrid(input_length, input_length);
 });
-
 
