@@ -57,7 +57,9 @@ populateGrid(COLS, ROWS);
 button.addEventListener('click', (e) => {
     let str_length = prompt("Please input your desired canvas size(less than 100px):");
     let input_length = parseInt(str_length);
-    console.log(input_length);
+    if(input_length > 100) {
+        return Error("Please select a length smaller than 100px");
+    }
     clearGrid();
     populateGrid(input_length, input_length);
 });
